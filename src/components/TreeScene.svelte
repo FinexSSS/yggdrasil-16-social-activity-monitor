@@ -12,6 +12,7 @@
   import { DOUBLE_CLICKED_REALM_EFFECTS } from '$lib/utils/doubleClickedRealmEffects';
   import { createEventDispatcher, onMount } from 'svelte';
   import * as THREE from 'three';
+  import { assets } from '$app/paths';
 
   export let modelName: string;
   export let treeScale: number = 8.5; // Individual tree scaling
@@ -49,7 +50,7 @@
   let activeDoubleClickedRealm: RealmName | null = null;
   let raycaster: THREE.Raycaster;
   let mouse: THREE.Vector2;
-  let camera: THREE.Camera;
+  let camera: THREE.PerspectiveCamera;
   let realmMeshes: Map<string, THREE.Mesh> = new Map();
   
   // Upside down effect state
@@ -339,7 +340,7 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div class="w-full h-full" on:click={handleCanvasClick} on:contextmenu={handleCanvasRightClick}>
-  <Canvas rendererParameters={{ preserveDrawingBuffer: true }}>
+  <Canvas>
     <!-- Camera -->
     <T.PerspectiveCamera
       makeDefault
@@ -381,7 +382,7 @@
       <!-- Model -->
       {#if modelName}
         <GLTF 
-          url={`/model/${modelName}`} 
+          url={`${assets}/model/${modelName}`} 
           position={[0, 2, 0]} 
           scale={treeScale}
         />
