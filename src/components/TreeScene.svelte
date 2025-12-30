@@ -17,6 +17,9 @@
   export let treeScale: number = 8.5; // Individual tree scaling
   export let socialDensity: number = 0;
   export let productiveDensity: number = 0;
+  
+  // Use GitHub raw CDN for large model files to avoid Vercel limits
+  const MODEL_CDN = 'https://raw.githubusercontent.com/FinexSSS/yggdrasil-16-social-activity-monitor/main/static/model';
   export let goalProgress: number = 0; // 0-100
   export let currentValue: number = 0;
   export let targetValue: number = 0;
@@ -381,7 +384,7 @@
       <!-- Model -->
       {#if modelName}
         <GLTF 
-          url={`/model/${modelName}`} 
+          url={`${MODEL_CDN}/${modelName}`} 
           position={[0, 2, 0]} 
           scale={treeScale}
         />

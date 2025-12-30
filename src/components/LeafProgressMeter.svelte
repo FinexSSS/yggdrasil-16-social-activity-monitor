@@ -12,8 +12,9 @@
 
   $: leafCount = getLeafCount(progress, maxLeaves);
 
-  // Load the GLTF model once
-  const gltf = useGltf('/model/leaf/blue-leaf.glb');
+  // Load the GLTF model once from GitHub CDN (Vercel free tier has size limits)
+  const MODEL_CDN = 'https://raw.githubusercontent.com/FinexSSS/yggdrasil-16-social-activity-monitor/main/static/model';
+  const gltf = useGltf(`${MODEL_CDN}/leaf/blue-leaf.glb`);
 
   // Generate 100 leaf positions to form a cohesive filled leaf shape
   // Leaves arranged to fill the entire area, not just the edges

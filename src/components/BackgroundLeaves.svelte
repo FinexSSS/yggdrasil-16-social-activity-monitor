@@ -8,10 +8,11 @@
 
   const time = writable(0);
 
-  // Load models once
-  const redLeaf = useGltf('/model/leaf/red-leaf.glb');
-  const greenLeaf = useGltf('/model/leaf/green-leaf.glb');
-  const dryLeaf = useGltf('/model/leaf/dry-leaf .glb');
+  // Load models once from GitHub CDN (Vercel free tier has size limits)
+  const MODEL_CDN = 'https://raw.githubusercontent.com/FinexSSS/yggdrasil-16-social-activity-monitor/main/static/model';
+  const redLeaf = useGltf(`${MODEL_CDN}/leaf/red-leaf.glb`);
+  const greenLeaf = useGltf(`${MODEL_CDN}/leaf/green-leaf.glb`);
+  const dryLeaf = useGltf(`${MODEL_CDN}/leaf/dry-leaf .glb`);
 
   useTask((delta) => {
     $time += delta;
