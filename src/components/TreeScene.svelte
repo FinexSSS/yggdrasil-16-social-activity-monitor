@@ -12,7 +12,6 @@
   import { DOUBLE_CLICKED_REALM_EFFECTS } from '$lib/utils/doubleClickedRealmEffects';
   import { createEventDispatcher, onMount } from 'svelte';
   import * as THREE from 'three';
-  import { assets } from '$app/paths';
 
   export let modelName: string;
   export let treeScale: number = 8.5; // Individual tree scaling
@@ -382,7 +381,7 @@
       <!-- Model -->
       {#if modelName}
         <GLTF 
-          url={`${assets}/model/${modelName}`} 
+          url={`/model/${modelName}`} 
           position={[0, 2, 0]} 
           scale={treeScale}
         />
