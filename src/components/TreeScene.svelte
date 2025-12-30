@@ -387,6 +387,8 @@
           url={`${MODEL_CDN}/${modelName}`} 
           position={[0, 2, 0]} 
           scale={treeScale}
+          on:error={(e) => console.error('Failed to load model:', modelName, e)}
+          on:load={() => console.log('Model loaded successfully:', modelName)}
         />
       {/if}
 
